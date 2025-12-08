@@ -45,5 +45,4 @@ jobs:
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
           SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
         run: |
-          # Запускаем dbt debug из корня проекта, указывая путь к dbt-проекту
           uv run dbt debug --project-dir dbt_project
