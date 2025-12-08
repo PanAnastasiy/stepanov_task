@@ -1,0 +1,36 @@
+# pre-commit configuration for Python + SQL + DBT
+repos:
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+        language_version: python3.10
+
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.318
+    hooks:
+      - id: ruff
+        args: [--fix]  # можно убрать, если хочешь только проверку
+        language_version: python3.10
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.12.0
+    hooks:
+      - id: isort
+        name: isort (python import sorter)
+        language_version: python3.10
+
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 2.4.0
+    hooks:
+      - id: sqlfluff-lint
+        args: ["--dialect", "snowflake", "--exclude-rules", "L009"]
+        files: \.sql$
