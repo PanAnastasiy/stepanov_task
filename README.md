@@ -70,3 +70,5 @@ Conn Type: Выберите соответствующий тип базы да�
 РЕЗУЛЬТАТЫ ВЫПОЛНЕНИЯ:
 
 ![img.png](resources/img.png)
+![img.png](resources/img_2.png)
+![img.png](resources/img_3.png)
