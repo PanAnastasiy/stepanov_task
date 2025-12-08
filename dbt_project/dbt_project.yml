@@ -2,7 +2,7 @@ name: 'my_dbt_project'
 version: '1.0.0'
 config-version: 2
 
-profile: 'dbt_project' 
+profile: 'dbt_airflow_project'
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -16,8 +16,7 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  my_dbt_project:
-    # Config for all models
+  dbt_airflow_project:
     staging:
       +materialized: view
     marts:

@@ -8,7 +8,7 @@ from cosmos.profiles import SnowflakeUserPasswordProfileMapping
 DBT_ROOT_PATH = Path("/opt/airflow/dbt_project")
 
 profile_config = ProfileConfig(
-    profile_name="dbt_project",
+    profile_name="dbt_airflow_project",
     target_name="dev",
     profile_mapping=SnowflakeUserPasswordProfileMapping(
         conn_id="snowflake_default",

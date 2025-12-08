@@ -11,6 +11,7 @@ on:
 jobs:
   lint_and_check:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -37,12 +38,12 @@ jobs:
 
       - name: dbt Debug (Check Snowflake Connectivity)
         env:
-          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
-          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
-          SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
-          SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
-          SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
-          SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
+          SNOWFLAKE_ACCOUNT: xhvkqqr-kf74215
+          SNOWFLAKE_USER: PANSTRAWBERRY
+          SNOWFLAKE_PASSWORD: TuKaqndCQpJ7Jz4
+          SNOWFLAKE_ROLE: SYSADMIN
+          SNOWFLAKE_WAREHOUSE: compute_wh
+          SNOWFLAKE_DATABASE: TEST_DB
+          SNOWFLAKE_SCHEMA: PUBLIC
         run: |
           uv run dbt debug --project-dir dbt_project

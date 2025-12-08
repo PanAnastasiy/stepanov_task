@@ -1,15 +1,17 @@
 {{ config(
     materialized='incremental',
-    unique_key='ORDER_PK'
+    unique_key='CUSTOMER_PK'
 ) }}
 
+
 SELECT DISTINCT
-    ORDER_PK,
-    ORDER_ID,
+    CUSTOMER_PK,
+    CUSTOMER_ID,
     LOAD_DATE,
     RECORD_SOURCE
-FROM {{ ref('stg_orders') }}
+FROM {{ ref('stg_customers') }}
 
     {% if is_incremental() %}
-WHERE ORDER_PK NOT IN (SELECT ORDER_PK FROM {{ this }})
+-- При инкрементальной загрузке добавляем только те PK, которых еще нет в таблице
+WHERE CUSTOMER_PK NOT IN (SELECT CUSTOMER_PK FROM {{ this }})
     {% endif %}
