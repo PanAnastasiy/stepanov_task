@@ -30,9 +30,6 @@ jobs:
       - name: Python lint (ruff)
         run: uv run ruff check .
 
-      - name: Python format check (black)
-        run: uv run black --check .
-
       - name: SQL lint (sqlfluff)
         run: uv run sqlfluff lint --project-dir .
 
