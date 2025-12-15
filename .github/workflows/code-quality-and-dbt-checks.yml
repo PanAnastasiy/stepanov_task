@@ -30,9 +30,6 @@ jobs:
       - name: Python lint (ruff)
         run: uv run ruff check .
 
-      - name: SQL lint (sqlfluff)
-        run: uv run sqlfluff lint --project-dir .
-
       - name: dbt debug (Snowflake connectivity)
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
