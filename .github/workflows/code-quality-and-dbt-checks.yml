@@ -30,8 +30,9 @@ jobs:
       - name: Python lint (ruff)
         run: uv run ruff check .
 
-      - name: dbt debug (Snowflake connectivity)
+      - name: dbt debug & Snowflake connectivity
         env:
+          DBT_PROFILES_DIR: ${{ github.workspace }}/core/dbt_customer_project
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
           SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
@@ -41,3 +42,4 @@ jobs:
           SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
         run: |
           uv run dbt debug --project-dir core/dbt_customer_project
+
