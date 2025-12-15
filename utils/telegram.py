@@ -51,5 +51,5 @@ class TelegramAlert:
 
             logger.info("Telegram notification sent for task={}", task_id)
 
-        except Exception:
+        except requests.RequestException:
             logger.exception("Failed to send Telegram alert")
