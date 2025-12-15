@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
-from airflow.utils.task_group import TaskGroup
 from airflow.utils.dates import days_ago
+from airflow.utils.task_group import TaskGroup
 
 from consts import DBT_PROFILES_DIR, DBT_PROJECT_DIR
 from utils.telegram import TelegramAlert

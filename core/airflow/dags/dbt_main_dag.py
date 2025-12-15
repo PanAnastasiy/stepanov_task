@@ -1,5 +1,6 @@
 from datetime import datetime
-from cosmos import DbtDag, ProjectConfig, ProfileConfig, ExecutionConfig
+
+from cosmos import DbtDag, ExecutionConfig, ProfileConfig, ProjectConfig
 from cosmos.profiles import SnowflakeUserPasswordProfileMapping
 
 from consts import DBT_ROOT_PATH

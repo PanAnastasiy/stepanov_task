@@ -1,4 +1,5 @@
 import os
+
 import requests
 from loguru import logger
 
@@ -50,5 +51,5 @@ class TelegramAlert:
 
             logger.info("Telegram notification sent for task={}", task_id)
 
-        except Exception as e:
+        except Exception:
             logger.exception("Failed to send Telegram alert")
