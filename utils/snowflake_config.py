@@ -1,10 +1,12 @@
 import os
+from typing import ClassVar
+
 from dotenv import load_dotenv
 
 
 class SnowflakeEnvConfig:
 
-    REQUIRED_VARS = [
+    REQUIRED_VARS: ClassVar[list[str]] = [
         "SNOWFLAKE_ACCOUNT",
         "SNOWFLAKE_USER",
         "SNOWFLAKE_PASSWORD",
