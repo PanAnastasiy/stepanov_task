@@ -10,7 +10,7 @@ dbt_customer_project:
       warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
       database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
       schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}"
-      threads: 3
+      threads: 2
   config:
     send_anonymous_usage_stats: false
     log_format: text

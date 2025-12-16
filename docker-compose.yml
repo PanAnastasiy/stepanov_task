@@ -1,4 +1,4 @@
-version: '3'
+
 services:
   airflow:
     build: .
@@ -10,6 +10,9 @@ services:
       - .env
     environment:
       PYTHONPATH: /opt/airflow:/opt/airflow/dags:/opt/airflow/project
+      _AIRFLOW_WWW_USER_CREATE: 'true' # REDO
+      _AIRFLOW_WWW_USER_USERNAME: admin # REDO
+      _AIRFLOW_WWW_USER_PASSWORD: admin # REDO
       AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT: 120
       AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
       DBT_PROFILES_DIR: /opt/airflow/dbt_customer_project
@@ -17,5 +20,5 @@ services:
       - ./core/airflow/dags:/opt/airflow/dags
       - ./core/dbt_customer_project:/opt/airflow/dbt_customer_project
       - ./:/opt/airflow/project
-      - ./core/airflow/libs:/opt/airflow/libs
-      - ./core/airflow//logs:/opt/airflow/logs
+      - ./core/airflow/logs:/opt/airflow/logs
+      - ./core/dbt_customer_project/profiles.yml:/opt/airflow/dbt_customer_project/profiles.yml
