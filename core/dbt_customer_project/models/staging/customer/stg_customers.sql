@@ -16,6 +16,7 @@ WITH SOURCE AS (
 SELECT
     CUSTOMER_ID,
     C_NATIONKEY,
+    -- Hashdiff generated as an MD5 hash of using dbt_utils.generate_surrogate_key
     {{ dbt_utils.generate_surrogate_key(['CUSTOMER_ID']) }} AS CUSTOMER_HK,
     {{ dbt_utils.generate_surrogate_key(['C_NAME', 'C_PHONE', 'C_ADDRESS']) }} AS CUSTOMER_HASHDIFF,
     {{ dbt_utils.generate_surrogate_key(['C_ACCTBAL']) }} AS HASHDIFF_FINANCE,

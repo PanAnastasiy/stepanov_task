@@ -10,6 +10,7 @@ WITH SOURCE AS (
 
 SELECT
     CUSTOMER_ID,
+    -- Hashdiff generated as an MD5 hash of using dbt_utils.generate_surrogate_key
     {{ dbt_utils.generate_surrogate_key(['customer_id']) }} AS CUSTOMER_HK,
     {{ dbt_utils.generate_surrogate_key(['vip_status']) }} AS VIP_HASHDIFF,
     JOINED_VIP_DATE::TIMESTAMP AS LOAD_DTS,

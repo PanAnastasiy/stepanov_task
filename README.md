@@ -38,21 +38,32 @@
 
 ```
 
-├ dbt_airflow_task
+dbt_airflow_task/
+│
+├── .github/                   # CI/CD workflows (lint, dbt test/run, build images)
 │
 ├── core/
-├── .github/                   # CI/CD Workflows
-├── core/
-│   ├── airflow/               # DAGs и конфигурация Airflow
-│   └── dbt_customer_project/  # Основной dbt проект
+│   ├── airflow/               # Airflow DAGs, plugins, airflow.cfg overrides
+│   │   ├── dags/              # DAG definitions
+│   │
+│   └── dbt_customer_project/  # Main dbt project
+│       ├── macros/            # Custom dbt macros (hashing, auditing, utils)
 │       ├── models/
-│       │   ├── stage/         # View
-│       │   ├── raw_vault/     # Hubs, Links, Satellites
-│       │   ├── business_vault/ # PITs, Computed Sats
-│       │   └── marts/         # Fact & Dimensions
-│       ├── seeds/             # CSV файлы для Master Data
-├── utils/                     # Python скрипты (Telegram alerts, Snowflake config)
-├── Makefile                   # Единая точка входа для управления проектом
+│       │   ├── staging/        # Staging models (views, light transforms)
+│       │   ├── raw_vault/      # Data Vault layer (Hubs, Links, Satellites)
+│       │   ├── business_vault/ # PIT tables, Computed Satellites
+│       │   ├── sources/        # Source definitions (YAML)
+│       │   └── marts/          # Data marts (facts, dimensions)
+│       ├── seeds/              # Seed CSVs (reference / master data)
+│       ├── dbt_project.yml     # dbt project configuration
+│       └── profiles.yml        # dbt connection profiles (optional, often external)
+│
+├── Dockerfile                 # Root image (optional, e.g. dbt runner)
+├── docker-compose.yml         # Local orchestration (Airflow + dbt + DB)
+├── entrypoint.sh              # Container startup logic
+│
+├── Makefile                   # Unified CLI for local dev & CI
+
 ```
 # Быстрый старт (Make)
 

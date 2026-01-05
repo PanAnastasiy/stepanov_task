@@ -14,6 +14,7 @@ WITH SOURCE AS (
 SELECT
     ORDER_ID,
     CUSTOMER_ID,
+    -- Hashdiff generated as an MD5 hash of using dbt_utils.generate_surrogate_key
     {{ dbt_utils.generate_surrogate_key(['order_id']) }} AS ORDER_HK,
     {{ dbt_utils.generate_surrogate_key(['customer_id']) }} AS CUSTOMER_HK,
     {{ dbt_utils.generate_surrogate_key(['order_id', 'customer_id']) }} AS LINK_CUST_ORDER_HK,
